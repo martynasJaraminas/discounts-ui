@@ -12,7 +12,7 @@ const isLoadingInitState = {
 }
 
 const LoadingScreen = ({ children }) => {
-    const { dispatch, isLoading } = useContext(discountContext)
+    const { dispatch, isLoading, JWT } = useContext(discountContext)
     const [isLoadingLocal, setIsLoadingLocal] = useState(isLoadingInitState)
 
     // Init useEffect to get required data
@@ -45,7 +45,7 @@ const LoadingScreen = ({ children }) => {
 
     const isUserLogged = async () => {
         try {
-            const JWT = await AsyncStorage.getItem('JWT')
+            // const JWT = await AsyncStorage.getItem('JWT')
             if (JWT !== null) {
                 // TODO: check response here
                 const validation = await (validateUserJWT(JWT) as any)

@@ -31,8 +31,7 @@ const CoreCard = props => {
     }
 
     const onSubscribeHandler = async card => {
-        // if(loggedIn){
-            if(true){
+        if(loggedIn){
             setIsLoading(true)
             if(!isSub){
                 // TODO: what happens if unsuccessfully call

@@ -40,15 +40,20 @@ const SignUp = ({ navigation }) => {
             })
             const phone = data['phone']? data['phone']: ""
             const signUpRes: any = await signUp(data['email'] , data['password1'], phone );
-            if(signUpRes.err){
+            if(signUpRes.status != 200){
                 dispatch({
                     type: "isLoading",
                     value: false
                 })
                 showError("Email already exist")
-                return;
+
             } else {
-                // TODO: clean fields after redirect
+
+                dispatch({
+                    type: "setJWT", 
+                    value: signUpRes.headers.authorization.split(' ')[1]
+                })
+
                 dispatch({
                     type: "loggedIn", 
                     value: true

@@ -6,9 +6,9 @@ const URL = 'https://nameless-hollows-17095.herokuapp.com/discounts'
 export const getDiscounts = async () => {
     try {
         await wait(1000);
-        return JSON.parse(mockdata.discounts)
-        // const result = await axios.get(URL)
-        // return JSON.parse(result.data.discounts)
+        // return JSON.parse(mockdata.discounts)
+        const result = await axios.get(URL)
+        return JSON.parse(result.data.discounts)
     } catch (error) {
         console.log(error)
     }

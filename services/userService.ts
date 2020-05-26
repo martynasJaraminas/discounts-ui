@@ -4,7 +4,7 @@ import {AsyncStorage} from 'react-native';
 
 setTimeout(async ()=> {
     await AsyncStorage.clear();
-    await AsyncStorage.setItem('JWT', 'I like to save it.');
+    // await AsyncStorage.setItem('JWT', 'I like to save it.');
 }, 500)
 
 
@@ -20,14 +20,13 @@ export const login = async (email: string, pw: string) => {
         email,
         pw,
     }
-
     try {
-        // const loginRes = await axios.post(LOGIN_URL, data)
-        await wait(1000);
-        return {ok : true}
-        // TODO: set JWT to local storage
+        const loginRes = await axios.post(LOGIN_URL, data)
+        await AsyncStorage.setItem('JWT', loginRes.headers.authorization.split(" ")[1]);
+        return {ok : true}  
     } catch (error) {
         console.log('ERROR logging in', error)
+        return {status : 400};
     }
 }
 
@@ -38,11 +37,11 @@ export const signUp = async (email: string, pw: string, phone: string) => {
         phone,
     }
     try {
-        // return await axios.post(REGISTER_URL, data)
-        await wait(1000);
-        return {ok : true}
+        const signUpRes = await axios.post(REGISTER_URL, data)
+        return signUpRes;
     } catch (error) {
         console.log('ERROR registering new user', error)
+        return {status : 400}
     }
 }
 
@@ -60,8 +59,8 @@ export const updateUserSubscription = async (discount, addSubscription) => {
         addSubscription
     }
     try {
-         // return await axios.post(SUBSCRIPTION, data);
-        await wait(1000);
+        const jwt = await AsyncStorage.getItem('JWT');
+         const updateUserSubscriptionRes =  await axios.post(SUBSCRIPTION, data , {headers: {authorization : `Bearer ${jwt}`}});
         return {ok : true}
     } catch (error) {
         console.log('ERROR updating users subscription', error)

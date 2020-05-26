@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
     StyleSheet,
     View,
@@ -13,13 +13,14 @@ import { login } from '../../services/userService'
 
 const LogIn = ({ navigation }) => {
     const { dispatch } = useContext(discountContext)
+    const [creds, setCreds] = useState({email: '', pw: ''});
 
     const handleSubmit = async () => {
         dispatch({
             type: "isLoading",
             value: true
         })
-        const result = await login("email", "pw") as any;
+        const result = await login(creds.email, creds.pw) as any;
         if(result.ok){
             dispatch({
                 type: "loggedIn",
@@ -30,6 +31,11 @@ const LogIn = ({ navigation }) => {
                 value: false
             })
             navigation.navigate('Search')
+        } else {
+            dispatch({
+                type: "isLoading",
+                value: false
+            })
         }
     }
     
@@ -40,12 +46,14 @@ const LogIn = ({ navigation }) => {
                     style={styles.inputStyles}
                     placeholder="Your email.."
                     multiline={false}
+                    onChange={(e)=> setCreds({...creds, email: e.nativeEvent.text})}
                 />
                 <TextInput
                     style={styles.inputStyles1}
                     placeholder="Your password.."
                     multiline={false}
                     secureTextEntry={true}
+                    onChange={(e)=> setCreds({...creds, pw: e.nativeEvent.text})}
                 />
                 <TouchableOpacity  onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.notAMember}>Not a member? Sing up!</Text>
