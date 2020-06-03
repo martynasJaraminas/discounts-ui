@@ -31,7 +31,6 @@ const CoreCard = props => {
     }
 
     const onSubscribeHandler = async card => {
-        if(loggedIn){
             setIsLoading(true)
             if(!isSub){
                 // TODO: what happens if unsuccessfully call
@@ -42,9 +41,6 @@ const CoreCard = props => {
                 setIsSub(false)
             }
             setIsLoading(false)
-        } else {
-            navigation.navigate('Log In')
-        }
     }
 
     // TODO: make check if discount is subscribed or not

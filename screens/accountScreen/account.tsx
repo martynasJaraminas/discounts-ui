@@ -61,7 +61,7 @@ const AccountScreen = ({ navigation }) => {
                 return (
                     <TextInput
                         style={styles.inputStyles}
-                        placeholder="P@ssw0rd"
+                        placeholder="Slaptazodis"
                         multiline={false}
                         maxLength={36}
                         onChangeText={(text) => onChangeText('password', text)}
@@ -112,17 +112,17 @@ const AccountScreen = ({ navigation }) => {
                                 style={{ height: 50 }}
                                 onPress={changeEmail}
                             >
-                                <Text>Change email</Text>
+                                <Text>Keisti elektronini pasta</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{ height: 50 }}
                                 onPress={changeSubscriptions}
                             >
-                                <Text>Change subscriptions</Text>
+                                <Text>Keisti megstamas prekes</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress={changePassword}>
-                                <Text>Change password</Text>
+                                <Text>Keisti slaptazodi</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

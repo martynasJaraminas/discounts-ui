@@ -36,7 +36,7 @@ const Home = ({navigation}) => {
                 <View style={styles.container}>
                     <TextInput
                         onChangeText={text => onChangeText(text)}
-                        placeholder="Search for something..."
+                        placeholder="Pieskos laukelis..."
                         style={styles.searchBox}
                         multiline={false}
                         // value={discountSearchName}

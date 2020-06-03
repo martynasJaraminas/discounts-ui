@@ -26,20 +26,20 @@ const Menu = () => {
             <Drawer.Screen
                 name="Search"
                 component={Home}
-                options={{ drawerLabel: 'Search' }}
+                options={{ drawerLabel: 'Paieska' }}
             />
             {!loggedInLocal && (
                 <Drawer.Screen
                     name="Log In"
                     component={LogIn}
-                    options={{ drawerLabel: 'Log In' }}
+                    options={{ drawerLabel: 'Prisijungimas' }}
                 />
             )}
             {loggedInLocal && (
             <Drawer.Screen
                 name="Account"
                 component={AccountScreen}
-                options={{ drawerLabel: 'Account settings' }}
+                options={{ drawerLabel: 'Nustatymai' }}
             />
         )}
             {/* <Drawer.Screen

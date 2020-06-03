@@ -31,7 +31,7 @@ const SignUp = ({ navigation }) => {
         if(data['password1'] != data['password2']){
             setError('password1', "notMatch", "please choose a different username")
             setError('password2', "notMatch", "please choose a different username")
-            showError("Passwords does not match!")
+            showError("Slaptazodziai nesutampa!")
             return;
         }else{
             dispatch({
@@ -45,7 +45,7 @@ const SignUp = ({ navigation }) => {
                     type: "isLoading",
                     value: false
                 })
-                showError("Email already exist")
+                showError("Narys tokiu elektoriniu pastu jau egzistuoja")
 
             } else {
 
@@ -79,12 +79,12 @@ const SignUp = ({ navigation }) => {
         <View style={{ flex: 1 }}>
             <View style={styles.container}>
                 <View style={styles.inputTitle}>
-                    <Text>Your email</Text>
+                    <Text>Jusu elektroninis pastas</Text>
                     {errors.email && errors.email.type == 'pattern' && (
-                        <Text style={styles.errorText}>Invalid email</Text>
+                        <Text style={styles.errorText}>Netinkamas elektroninis pastas</Text>
                     )}
                     {errors.email && errors.email.type == 'required' && (
-                        <Text style={styles.errorText}>Email required</Text>
+                        <Text style={styles.errorText}>Butinas elektroninis pastas</Text>
                     )}
                 </View>
                 <TextInput
@@ -95,46 +95,46 @@ const SignUp = ({ navigation }) => {
                     onChangeText={text => setValue('email', text)}
                 />
                 <View style={styles.inputTitle}>
-                    <Text>Password</Text>
+                    <Text>Jusu slaptazodis</Text>
                     {errors.password1 && errors.password1.type == 'min' && (
-                        <Text style={styles.errorText}>Password too short</Text>
+                        <Text style={styles.errorText}>Slaptazodis per trumpas</Text>
                     )}
                     {errors.password1 && errors.password1.type == 'required' && (
-                        <Text style={styles.errorText}>Password required</Text>
+                        <Text style={styles.errorText}>Slaptazodis yra privalomas</Text>
                     )}
                      {errors.password1 && errors.password1.type == 'notMatch' && (
-                        <Text style={styles.errorText}>Password does not match!</Text>
+                        <Text style={styles.errorText}>Slaptazodziai nera vienodi</Text>
                     )}
                 </View>
                 <TextInput
                     style={styles.inputStyles}
-                    placeholder="P@ssw0rd"
+                    placeholder="Slaptazodis"
                     multiline={false}
                     maxLength={36}
                     onChangeText={text => setValue('password1', text)}
                     secureTextEntry={true}
                 />
                 <View style={styles.inputTitle}>
-                    <Text>Re-enter password</Text>
+                    <Text>Pakartokite slaptazodi</Text>
                     {errors.password2 && errors.password2.type == 'min' && (
-                        <Text style={styles.errorText}>Password too short</Text>
+                        <Text style={styles.errorText}>Slaptazodis per trumpas</Text>
                     )}
                     {errors.password2 && errors.password2.type == 'required' && (
-                        <Text style={styles.errorText}>Password required</Text>
+                        <Text style={styles.errorText}>Slaptazodis yra privalomas</Text>
                     )}
                       {errors.password2 && errors.password2.type == 'notMatch' && (
-                        <Text style={styles.errorText}>Password does not match!</Text>
+                        <Text style={styles.errorText}>Slaptazodziai nera vienodi</Text>
                     )}
                 </View>
                 <TextInput
                     style={styles.inputStyles}
-                    placeholder="Validate password"
+                    placeholder="Pakartokite slaptazodi"
                     multiline={false}
                     maxLength={36}
                     onChangeText={text => setValue('password2', text)}
                     secureTextEntry={true}
                 />
-                <Text>Phone number</Text>
+                <Text>Telefono numeris</Text>
                 <TextInput
                     style={styles.inputStyles}
                     placeholder="

@@ -44,22 +44,22 @@ const LogIn = ({ navigation }) => {
             <View style={styles.container}>
                 <TextInput
                     style={styles.inputStyles}
-                    placeholder="Your email.."
+                    placeholder="Jusu pastas.."
                     multiline={false}
                     onChange={(e)=> setCreds({...creds, email: e.nativeEvent.text})}
                 />
                 <TextInput
                     style={styles.inputStyles1}
-                    placeholder="Your password.."
+                    placeholder="Jusu slaptazodis.."
                     multiline={false}
                     secureTextEntry={true}
                     onChange={(e)=> setCreds({...creds, pw: e.nativeEvent.text})}
                 />
                 <TouchableOpacity  onPress={() => navigation.navigate('SignUp')}>
-                <Text style={styles.notAMember}>Not a member? Sing up!</Text>
+                <Text style={styles.notAMember}>Neesate narys? Prisiregistruokite!</Text>
                 </TouchableOpacity>
-                <Button onPress={handleSubmit} title="Log In" />
-                <Text style={styles.otherWays}>Other ways to sign in:</Text>
+                <Button onPress={handleSubmit} title="Prisijungti" />
+                <Text style={styles.otherWays}>Kiti budai prisijungti:</Text>
                 <View style={styles.otherWaysToJoinLogo}>
                     <TouchableOpacity
                         style={{
